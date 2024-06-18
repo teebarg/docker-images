@@ -17,7 +17,7 @@ jobs:
       fail-fast: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.0
+      - uses: actions/checkout@v4.1.7
       - name: Set Dockerfile name
         if: matrix.image.name != 'latest'
         run: echo "DOCKERFILE_NAME=${{ matrix.image.name }}" >> $GITHUB_ENV
@@ -34,7 +34,7 @@ jobs:
       - name: Get date for tags
         run: echo "DATE_TAG=$(date -I)" >> "$GITHUB_ENV"
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           platforms: linux/amd64,linux/arm64
